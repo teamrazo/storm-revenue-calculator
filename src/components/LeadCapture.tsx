@@ -31,7 +31,6 @@ export default function LeadCapture({ onSubmit }: LeadCaptureProps) {
 
     setLoading(true);
 
-    // POST to webhook if configured
     const webhookUrl = process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL;
     if (webhookUrl) {
       try {
@@ -59,13 +58,13 @@ export default function LeadCapture({ onSubmit }: LeadCaptureProps) {
       className="w-full max-w-lg mx-auto"
     >
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-4">
-          <span className="text-blue-400 text-sm font-medium">✨ Your results are ready</span>
+        <div className="inline-flex items-center gap-2 bg-brand-primary/10 border border-brand-primary/20 rounded-full px-4 py-2 mb-4">
+          <span className="text-brand-primary text-sm font-medium">✨ Your results are ready</span>
         </div>
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-brand-fg mb-2">
           Where should we send your report?
         </h2>
-        <p className="text-slate-400">
+        <p className="text-brand-muted">
           Enter your details to unlock your Storm Revenue Recovery Score and see exactly how much you&apos;re leaving on the table.
         </p>
       </div>
@@ -77,7 +76,7 @@ export default function LeadCapture({ onSubmit }: LeadCaptureProps) {
             placeholder="Your Name *"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full px-5 py-4 bg-slate-800/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+            className="w-full px-5 py-4 bg-brand-card border border-brand-border rounded-xl text-brand-fg placeholder-brand-muted focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-colors"
             required
           />
         </div>
@@ -87,7 +86,7 @@ export default function LeadCapture({ onSubmit }: LeadCaptureProps) {
             placeholder="Email Address *"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full px-5 py-4 bg-slate-800/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+            className="w-full px-5 py-4 bg-brand-card border border-brand-border rounded-xl text-brand-fg placeholder-brand-muted focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-colors"
             required
           />
         </div>
@@ -97,7 +96,7 @@ export default function LeadCapture({ onSubmit }: LeadCaptureProps) {
             placeholder="Company Name *"
             value={form.company}
             onChange={(e) => setForm({ ...form, company: e.target.value })}
-            className="w-full px-5 py-4 bg-slate-800/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+            className="w-full px-5 py-4 bg-brand-card border border-brand-border rounded-xl text-brand-fg placeholder-brand-muted focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-colors"
             required
           />
         </div>
@@ -107,14 +106,14 @@ export default function LeadCapture({ onSubmit }: LeadCaptureProps) {
             placeholder="Phone (optional)"
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            className="w-full px-5 py-4 bg-slate-800/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+            className="w-full px-5 py-4 bg-brand-card border border-brand-border rounded-xl text-brand-fg placeholder-brand-muted focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-colors"
           />
         </div>
 
         <motion.button
           type="submit"
           disabled={!isValid || loading}
-          className="w-full py-4 mt-4 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 disabled:text-slate-500 text-white font-bold text-lg rounded-xl transition-colors"
+          className="w-full py-4 mt-4 bg-gradient-to-r from-brand-primary to-brand-accent disabled:from-brand-border disabled:to-brand-border disabled:text-brand-muted text-white font-bold text-lg rounded-xl transition-all shadow-[0_0_24px_rgba(168,58,196,0.25)] hover:shadow-[0_0_32px_rgba(168,58,196,0.4)]"
           whileHover={isValid ? { scale: 1.02 } : {}}
           whileTap={isValid ? { scale: 0.98 } : {}}
         >
@@ -131,7 +130,7 @@ export default function LeadCapture({ onSubmit }: LeadCaptureProps) {
           )}
         </motion.button>
 
-        <p className="text-center text-xs text-slate-500 mt-3">
+        <p className="text-center text-xs text-brand-muted mt-3">
           🔒 Your info is private. No spam, ever.
         </p>
       </form>

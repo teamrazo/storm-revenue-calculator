@@ -13,9 +13,9 @@ export default function ScoreGauge({ score }: ScoreGaugeProps) {
   const offset = circumference - progress;
 
   const getColor = () => {
-    if (score >= 70) return '#22c55e';
-    if (score >= 40) return '#f59e0b';
-    return '#ef4444';
+    if (score >= 70) return '#10B981';
+    if (score >= 40) return '#F59E0B';
+    return '#EF4444';
   };
 
   const getLabel = () => {
@@ -36,7 +36,7 @@ export default function ScoreGauge({ score }: ScoreGaugeProps) {
             cy="50"
             r={radius}
             fill="none"
-            stroke="rgba(30, 58, 95, 0.5)"
+            stroke="rgba(42, 42, 56, 0.5)"
             strokeWidth="8"
           />
           {/* Progress circle */}
@@ -68,7 +68,7 @@ export default function ScoreGauge({ score }: ScoreGaugeProps) {
           >
             {score}
           </motion.span>
-          <span className="text-sm text-slate-400 mt-1">out of 100</span>
+          <span className="text-sm text-brand-muted mt-1">out of 100</span>
         </div>
       </div>
       <motion.div
@@ -78,7 +78,7 @@ export default function ScoreGauge({ score }: ScoreGaugeProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
       >
-        {getLabel()}
+        ⚡ {getLabel()}
       </motion.div>
     </div>
   );

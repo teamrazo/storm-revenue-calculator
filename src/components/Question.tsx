@@ -32,21 +32,21 @@ export default function Question({ question, value, onAnswer }: QuestionProps) {
       transition={{ duration: 0.4, ease: 'easeOut' }}
       className="w-full max-w-2xl mx-auto"
     >
-      <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
+      <h2 className="text-2xl md:text-3xl font-bold text-brand-fg mb-2 leading-tight">
         {question.title}
       </h2>
       {question.subtitle && (
-        <p className="text-slate-400 mb-8 text-base md:text-lg">{question.subtitle}</p>
+        <p className="text-brand-muted mb-8 text-base md:text-lg">{question.subtitle}</p>
       )}
 
       {question.type === 'slider' && (
         <div className="mt-8">
           <div className="text-center mb-6">
-            <span className="text-5xl md:text-6xl font-bold text-blue-400 glow-text tabular-nums">
+            <span className="text-5xl md:text-6xl font-bold text-brand-primary glow-text tabular-nums">
               {sliderValue >= (question.max ?? 500) ? `${sliderValue}+` : sliderValue}
             </span>
             {question.suffix && (
-              <span className="text-xl text-slate-400 ml-1">{question.suffix}</span>
+              <span className="text-xl text-brand-muted ml-1">{question.suffix}</span>
             )}
           </div>
           <input
@@ -60,13 +60,13 @@ export default function Question({ question, value, onAnswer }: QuestionProps) {
             onTouchEnd={handleSliderCommit}
             className="w-full"
           />
-          <div className="flex justify-between mt-2 text-sm text-slate-500">
+          <div className="flex justify-between mt-2 text-sm text-brand-muted">
             <span>{question.min}{question.suffix}</span>
             <span>{question.max}+{question.suffix}</span>
           </div>
           <motion.button
             onClick={() => onAnswer(sliderValue)}
-            className="mt-8 w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg rounded-xl transition-colors"
+            className="mt-8 w-full py-4 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold text-lg rounded-xl transition-all shadow-[0_0_24px_rgba(168,58,196,0.25)] hover:shadow-[0_0_32px_rgba(168,58,196,0.4)]"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -85,8 +85,8 @@ export default function Question({ question, value, onAnswer }: QuestionProps) {
                 onClick={() => onAnswer(option.value)}
                 className={`w-full text-left px-6 py-4 rounded-xl border-2 transition-all text-base md:text-lg font-medium ${
                   isSelected
-                    ? 'border-blue-500 bg-blue-500/20 text-white'
-                    : 'border-slate-700 bg-slate-800/50 text-slate-300 hover:border-blue-500/50 hover:bg-slate-800'
+                    ? 'border-brand-primary bg-brand-primary/20 text-brand-fg'
+                    : 'border-brand-border bg-brand-card/50 text-brand-muted-light hover:border-brand-primary/50 hover:bg-brand-card'
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

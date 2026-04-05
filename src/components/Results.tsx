@@ -32,10 +32,10 @@ export default function Results({ result, insights }: ResultsProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-          Your Storm Revenue Recovery Score
+        <h1 className="text-3xl md:text-4xl font-bold text-brand-fg mb-2">
+          🌩️ Your Storm Revenue Recovery Score
         </h1>
-        <p className="text-slate-400 text-lg">
+        <p className="text-brand-muted text-lg">
           Here&apos;s what the numbers say about your business.
         </p>
       </motion.div>
@@ -57,32 +57,32 @@ export default function Results({ result, insights }: ResultsProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
       >
-        <p className="text-slate-400 text-sm uppercase tracking-wider mb-2 font-medium">
-          Estimated Annual Revenue Gap
+        <p className="text-brand-muted text-sm uppercase tracking-wider mb-2 font-medium">
+          ⚡ Estimated Annual Revenue Gap
         </p>
         <div className="flex items-center justify-center gap-3 mb-4">
           <span className="text-4xl md:text-6xl font-bold text-orange-400 glow-text">
             {formatCurrency(result.revenueGapLow)}
           </span>
-          <span className="text-2xl text-slate-500">–</span>
+          <span className="text-2xl text-brand-muted">–</span>
           <span className="text-4xl md:text-6xl font-bold text-orange-400 glow-text">
             {formatCurrency(result.revenueGapHigh)}
           </span>
         </div>
-        <p className="text-lg text-slate-300">
-          You&apos;re potentially leaving this on the table <strong className="text-white">every year</strong>.
+        <p className="text-lg text-brand-muted-light">
+          You&apos;re potentially leaving this on the table <strong className="text-brand-fg">every year</strong>.
         </p>
 
-        <div className="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-slate-700/50">
+        <div className="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-brand-border/50">
           <div>
-            <p className="text-sm text-slate-500 mb-1">Current Estimated Revenue</p>
-            <p className="text-xl md:text-2xl font-bold text-slate-300">
+            <p className="text-sm text-brand-muted mb-1">Current Estimated Revenue</p>
+            <p className="text-xl md:text-2xl font-bold text-brand-muted-light">
               {formatCurrency(result.currentAnnualRevenue)}
             </p>
           </div>
           <div>
-            <p className="text-sm text-slate-500 mb-1">Potential With Systems</p>
-            <p className="text-xl md:text-2xl font-bold text-green-400">
+            <p className="text-sm text-brand-muted mb-1">Potential With Systems</p>
+            <p className="text-xl md:text-2xl font-bold text-brand-green">
               {formatCurrency(result.potentialAnnualRevenue)}
             </p>
           </div>
@@ -96,7 +96,7 @@ export default function Results({ result, insights }: ResultsProps) {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
       >
-        <h3 className="text-xl font-bold text-white mb-4">Key Insights</h3>
+        <h3 className="text-xl font-bold text-brand-fg mb-4">⚡ Storm Recovery Insights</h3>
         {insights.map((insight, index) => (
           <motion.div
             key={index}
@@ -108,8 +108,8 @@ export default function Results({ result, insights }: ResultsProps) {
             <div className="flex gap-4">
               <span className="text-3xl flex-shrink-0">{insight.icon}</span>
               <div>
-                <h4 className="text-lg font-bold text-white mb-1">{insight.title}</h4>
-                <p className="text-slate-400 text-sm leading-relaxed">{insight.description}</p>
+                <h4 className="text-lg font-bold text-brand-fg mb-1">{insight.title}</h4>
+                <p className="text-brand-muted text-sm leading-relaxed">{insight.description}</p>
               </div>
             </div>
           </motion.div>
@@ -123,20 +123,20 @@ export default function Results({ result, insights }: ResultsProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2 }}
       >
-        <p className="text-slate-400 mb-4">
+        <p className="text-brand-muted mb-4">
           Ready to close the gap and capture every storm opportunity?
         </p>
         <motion.a
-          href="https://razorsharpnetworks.com/storm-audit"
+          href="https://ai.razorsharpnetworks.com/widget/booking/31jbAMWJlvv9pPbTSD9h"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block w-full md:w-auto px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold text-xl rounded-xl shadow-lg shadow-blue-500/25 transition-all"
+          className="inline-block w-full md:w-auto px-10 py-5 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold text-xl rounded-xl shadow-[0_0_24px_rgba(168,58,196,0.25)] hover:shadow-[0_0_32px_rgba(168,58,196,0.4)] transition-all"
           whileHover={{ scale: 1.03, y: -2 }}
           whileTap={{ scale: 0.98 }}
         >
           Book a Free Storm Systems Audit →
         </motion.a>
-        <p className="text-xs text-slate-500 mt-3">
+        <p className="text-xs text-brand-muted mt-3">
           Free 30-minute consultation. No obligation. Just clarity.
         </p>
       </motion.div>
