@@ -116,29 +116,78 @@ export default function Results({ result, insights }: ResultsProps) {
         ))}
       </motion.div>
 
-      {/* CTA */}
+      {/* Smart CTA — score-based routing */}
       <motion.div
         className="text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2 }}
       >
-        <p className="text-brand-muted mb-4">
-          See exactly how top restoration companies are closing the gap — and how you can too.
-        </p>
-        <motion.a
-          href="https://webclass.razorsharpnetworks.com/"
+        {result.score >= 60 ? (
+          // High scorers → AI Audit (ready to buy)
+          <>
+            <p className="text-brand-muted mb-4">
+              Your systems are strong — but you&apos;re still leaving {formatCurrency(result.revenueGapLow)}+ on the table. A personalized AI Audit shows you exactly where to plug the remaining leaks.
+            </p>
+            <motion.a
+              href="https://aiaudit.razorsharpnetworks.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-full md:w-auto px-10 py-5 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold text-xl rounded-xl shadow-[0_0_24px_rgba(168,58,196,0.25)] hover:shadow-[0_0_32px_rgba(168,58,196,0.4)] transition-all"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Get Your Personalized AI Audit →
+            </motion.a>
+            <p className="text-xs text-brand-muted mt-3">
+              See the exact systems that close the gap — built for your business.
+            </p>
+            <p className="text-xs text-brand-muted mt-6">
+              Or{' '}
+              <a href="https://webclass.razorsharpnetworks.com/" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:underline">
+                watch the free webclass first
+              </a>
+            </p>
+          </>
+        ) : (
+          // Low/mid scorers → Webclass (need education first)
+          <>
+            <p className="text-brand-muted mb-4">
+              See exactly how top restoration companies are closing the gap — and how you can too.
+            </p>
+            <motion.a
+              href="https://webclass.razorsharpnetworks.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-full md:w-auto px-10 py-5 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold text-xl rounded-xl shadow-[0_0_24px_rgba(168,58,196,0.25)] hover:shadow-[0_0_32px_rgba(168,58,196,0.4)] transition-all"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Watch the Free Webclass — Close Your Revenue Gap →
+            </motion.a>
+            <p className="text-xs text-brand-muted mt-3">
+              Free training. Learn the systems that capture every storm opportunity.
+            </p>
+          </>
+        )}
+      </motion.div>
+
+      {/* Cross-sell: Free Audit */}
+      <motion.div
+        className="glass-card rounded-xl p-6 mt-8 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2.4 }}
+      >
+        <p className="text-sm text-brand-muted mb-2">📊 Want a deeper look at your operations?</p>
+        <a
+          href="https://freeaudit.razorsharpnetworks.com/audit"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block w-full md:w-auto px-10 py-5 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold text-xl rounded-xl shadow-[0_0_24px_rgba(168,58,196,0.25)] hover:shadow-[0_0_32px_rgba(168,58,196,0.4)] transition-all"
-          whileHover={{ scale: 1.03, y: -2 }}
-          whileTap={{ scale: 0.98 }}
+          className="text-brand-primary font-semibold hover:underline"
         >
-          Watch the Free Webclass — Close Your Revenue Gap →
-        </motion.a>
-        <p className="text-xs text-brand-muted mt-3">
-          Free training. Learn the systems that capture every storm opportunity.
-        </p>
+          Take the Free AI Growth Audit — 8 questions, 2 minutes →
+        </a>
       </motion.div>
     </motion.div>
   );
