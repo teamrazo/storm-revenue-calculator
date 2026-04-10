@@ -232,7 +232,20 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <footer style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '24px 16px', textAlign: 'center', background: '#0A0A0F' }}>
+          <p style={{ color: '#666', fontSize: 13, lineHeight: 1.8, margin: 0 }}>
+            © 2026 • Legacy Media LLC DBA RazoRSharp Networks • All Rights Reserved.
+          </p>
+          <p style={{ color: '#555', fontSize: 12, margin: '4px 0 0' }}>
+            Powered By:{' '}
+            <a href="https://pillar.razorsharpnetworks.com/webassetfx-smart-sites" style={{ color: '#7c3aed', textDecoration: 'none' }}>WebAssetFX</a>
+            {' & '}
+            <a href="https://pillar.razorsharpnetworks.com/automate-ai-agents-overview" style={{ color: '#7c3aed', textDecoration: 'none' }}>AutoMATE™ AI Technology</a>
+          </p>
+        </footer>
+      </body>
     </html>
   );
 }
