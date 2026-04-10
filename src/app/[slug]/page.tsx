@@ -133,7 +133,7 @@ export default async function LocationPage({
               RazoRSharp Networks &mdash; {regionName}
             </p>
             <h1 className="text-3xl sm:text-4xl font-bold mb-6" style={{ color: 'var(--brand-fg)' }}>
-              {city} Storm &amp; Hail Damage Revenue Calculator
+              {city}{' '}Storm &amp; Hail Damage Revenue Calculator
             </h1>
 
             {/* Intro copy */}
@@ -286,7 +286,7 @@ export default async function LocationPage({
               Ready to find your number?
             </h2>
             <p className="mb-6" style={{ color: 'var(--brand-muted)' }}>
-              See how much revenue your {city} business is leaving on the table &rarr;
+              See how much revenue your {city}{' '}business is leaving on the table &rarr;
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
