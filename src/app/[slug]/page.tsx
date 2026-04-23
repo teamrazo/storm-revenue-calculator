@@ -80,6 +80,86 @@ function buildFaqs(city: string, state: string, stateCode: string, annualStorms:
   ];
 }
 
+function TrustIcon({ children }: { children: any }) {
+  return (
+    <span
+      style={{
+        width: 14,
+        height: 14,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#8b8b95',
+        flexShrink: 0,
+      }}
+    >
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        {children}
+      </svg>
+    </span>
+  );
+}
+
+function TrustBadgeRow({ items }: { items: Array<{ label: string; icon: any }> }) {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '10px 18px',
+        marginTop: 12,
+        color: '#888',
+        fontSize: '12.5px',
+        lineHeight: 1.5,
+      }}
+    >
+      {items.map((item) => (
+        <div key={item.label} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          <TrustIcon>{item.icon}</TrustIcon>
+          <span>{item.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ProofLayer() {
+  const proofItems = [
+    '1,200+ restoration businesses diagnosed',
+    'Leads contacted in 5 min convert 100× more',
+    'Avg $248K revenue gap identified',
+  ];
+
+  return (
+    <div
+      className="mb-14 rounded-2xl p-4 sm:p-5 border"
+      style={{
+        background: 'rgba(255,255,255,0.04)',
+        borderColor: 'rgba(255,255,255,0.08)',
+        boxShadow: '0 18px 45px rgba(0, 0, 0, 0.18)',
+        backdropFilter: 'blur(14px)',
+      }}
+    >
+      <div className="flex flex-wrap gap-3">
+        {proofItems.map((item) => (
+          <div
+            key={item}
+            className="flex-1 min-w-[190px] rounded-xl px-4 py-3 border text-xs sm:text-sm"
+            style={{
+              background: 'rgba(255,255,255,0.03)',
+              borderColor: 'rgba(255,255,255,0.08)',
+              color: 'var(--brand-fg)',
+            }}
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default async function LocationPage({
   params,
 }: {
@@ -117,6 +197,35 @@ export default async function LocationPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: SITE_URL,
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: state,
+                item: `${SITE_URL}/states/${stateCode.toLowerCase()}`,
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: city,
+                item: `${SITE_URL}/${slug}`,
+              },
+            ],
+          }),
+        }}
       />
       <main
         className="min-h-screen tech-grid"
@@ -183,7 +292,64 @@ export default async function LocationPage({
             >
               Calculate Your Storm Revenue Gap &rarr;
             </Link>
+            <TrustBadgeRow
+              items={[
+                { label: 'Private & secure', icon: <><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 1 1 8 0v3" /></> },
+                { label: '90-second results', icon: <><path d="M13 2 5 14h6l-1 8 8-12h-6l1-8Z" /></> },
+                { label: '100% free', icon: <><circle cx="12" cy="12" r="8" /><path d="M9 10c.3-1.3 1.4-2 3-2 1.7 0 2.8.8 3 2-.4 1.1-1.3 1.8-3 2-1.8.2-2.7.9-3 2" /><path d="M12 17h.01" /></> },
+              ]}
+            />
           </div>
+
+          <ProofLayer />
+
+          {/* How It Works */}
+          <section className="mb-14">
+            <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--brand-fg)' }}>
+              How It Works
+            </h2>
+            <p className="mb-8 text-sm" style={{ color: 'var(--brand-muted)' }}>
+              Your {city} Storm Readiness Score in 3 steps — no signup, no fluff.
+            </p>
+            <ol className="space-y-4">
+              {[
+                {
+                  step: '01',
+                  title: 'Answer 6 Questions',
+                  body: `Tell us your monthly lead volume, average ticket size, close rate, follow-up speed, automation level, and tracking method. Everything specific to your ${city} operation — takes under 90 seconds.`,
+                },
+                {
+                  step: '02',
+                  title: 'Get Your Storm Readiness Score',
+                  body: 'Receive an instant score out of 100 that benchmarks your operational readiness against top-performing restoration companies in the region. No guesswork — just your number.',
+                },
+                {
+                  step: '03',
+                  title: 'See Your Revenue Gap and Fix It',
+                  body: `We calculate the exact dollar amount your ${city} business is leaving on the table after every storm, then show you the specific levers — follow-up speed, automation, close rate — that close the gap.`,
+                },
+              ].map((item) => (
+                <li
+                  key={item.step}
+                  className="flex gap-5 rounded-xl p-5 border"
+                  style={{ background: 'var(--brand-card)', borderColor: 'var(--brand-border)' }}
+                >
+                  <span
+                    className="text-3xl font-black flex-shrink-0 leading-none mt-0.5 tabular-nums"
+                    style={{ color: 'var(--brand-primary)', opacity: 0.6 }}
+                  >
+                    {item.step}
+                  </span>
+                  <div>
+                    <p className="font-semibold mb-1" style={{ color: 'var(--brand-fg)' }}>
+                      {item.title}
+                    </p>
+                    <p className="text-sm" style={{ color: 'var(--brand-muted)' }}>{item.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
 
           {/* Why section */}
           <section className="mb-14">
@@ -283,10 +449,11 @@ export default async function LocationPage({
             style={{ background: 'var(--brand-card)', borderColor: 'var(--brand-border)' }}
           >
             <h2 className="text-xl font-bold mb-2" style={{ color: 'var(--brand-fg)' }}>
-              Ready to find your number?
+              Stop leaving storm revenue on the table.
             </h2>
             <p className="mb-6" style={{ color: 'var(--brand-muted)' }}>
-              See how much revenue your {city}{' '}business is leaving on the table &rarr;
+              Your {city} competitors are already using systems like this.
+              Find your exact gap — free, 90 seconds, no obligation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -306,6 +473,13 @@ export default async function LocationPage({
                 Watch the Free Webclass
               </a>
             </div>
+            <TrustBadgeRow
+              items={[
+                { label: 'Private & secure', icon: <><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 1 1 8 0v3" /></> },
+                { label: '90-second results', icon: <><path d="M13 2 5 14h6l-1 8 8-12h-6l1-8Z" /></> },
+                { label: '100% free', icon: <><circle cx="12" cy="12" r="8" /><path d="M9 10c.3-1.3 1.4-2 3-2 1.7 0 2.8.8 3 2-.4 1.1-1.3 1.8-3 2-1.8.2-2.7.9-3 2" /><path d="M12 17h.01" /></> },
+              ]}
+            />
           </div>
 
           {/* Nav footer */}
