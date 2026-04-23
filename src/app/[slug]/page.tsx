@@ -359,22 +359,22 @@ export default async function LocationPage({
             <ul className="space-y-4">
               {[
                 {
-                  icon: '⚡',
+                  icon: 'bolt',
                   title: `${annualStorms}+ storm events per year`,
                   body: `The ${regionName} averages more storm events annually than most US markets. Each one is a revenue event — but only for contractors with systems that activate instantly. Manual processes mean you lose the race to competitors who respond in minutes.`,
                 },
                 {
-                  icon: '🧊',
+                  icon: 'hail',
                   title: `${avgHailSize.charAt(0).toUpperCase() + avgHailSize.slice(1)} hail means high-ticket damage`,
                   body: `${avgHailSize.charAt(0).toUpperCase() + avgHailSize.slice(1)} hail causes significant ${primaryService} and ${secondaryService} damage across ${city} neighborhoods. Each claim represents thousands in potential revenue. Conversion rate and follow-up speed determine whether that revenue goes to you or your competition.`,
                 },
                 {
-                  icon: '📅',
+                  icon: 'calendar',
                   title: `Compressed ${peakSeason} window`,
                   body: `Storm season in ${city} concentrates the bulk of annual opportunity into a few months. Contractors who enter ${peakSeason} without automated lead capture and follow-up systems consistently underperform. The calculator shows how much that bottleneck is costing you.`,
                 },
                 {
-                  icon: '🏙️',
+                  icon: 'city',
                   title: `${populationFormatted}+ population means real volume`,
                   body: `${city}'s ${populationFormatted} residents generate substantial post-storm demand for ${topServices.slice(0, 3).join(', ')} services. The companies that capture that volume systematically — not by chance — are the ones growing year over year in the ${regionName}.`,
                 },
@@ -384,7 +384,14 @@ export default async function LocationPage({
                   className="flex gap-4 rounded-xl p-5 border"
                   style={{ background: 'var(--brand-card)', borderColor: 'var(--brand-border)' }}
                 >
-                  <span className="text-2xl flex-shrink-0 mt-0.5">{item.icon}</span>
+                  <span className="flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-accent, #a78bfa)' }}>
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      {item.icon === 'bolt' && <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8Z" />}
+                      {item.icon === 'hail' && <><circle cx="12" cy="12" r="3" /><path d="M12 3v2" /><path d="M12 19v2" /><path d="M5.64 5.64l1.41 1.41" /><path d="M16.95 16.95l1.41 1.41" /><path d="M3 12h2" /><path d="M19 12h2" /><path d="M5.64 18.36l1.41-1.41" /><path d="M16.95 7.05l1.41-1.41" /></>}
+                      {item.icon === 'calendar' && <><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4" /><path d="M8 2v4" /><path d="M3 10h18" /></>}
+                      {item.icon === 'city' && <><rect x="3" y="8" width="6" height="14" rx="1" /><rect x="9" y="2" width="6" height="20" rx="1" /><rect x="15" y="6" width="6" height="16" rx="1" /></>}
+                    </svg>
+                  </span>
                   <div>
                     <p className="font-semibold mb-1" style={{ color: 'var(--brand-fg)' }}>{item.title}</p>
                     <p className="text-sm" style={{ color: 'var(--brand-muted)' }}>{item.body}</p>
