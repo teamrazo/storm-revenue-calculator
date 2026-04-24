@@ -10,6 +10,7 @@ import Question from './Question';
 import LeadCapture, { type LeadData } from './LeadCapture';
 import Results from './Results';
 import RainEffect from './RainEffect';
+import TrustBadgeRow from './TrustBadgeRow';
 
 type Step = 'questions' | 'capture' | 'results';
 
@@ -40,6 +41,7 @@ export default function Calculator() {
   };
 
   const handleLeadSubmit = (_data: LeadData) => {
+    void _data;
     setStep('results');
   };
 
@@ -77,10 +79,11 @@ export default function Calculator() {
 
         {/* Tagline on first question */}
         {step === 'questions' && currentQuestion === 0 && (
-          <div className="text-center px-4 -mb-4">
-            <p className="text-brand-muted-light text-sm italic tracking-wide">
+          <div className="px-4 text-center -mb-2">
+            <p className="text-sm italic tracking-wide text-brand-muted-light">
               ⚡ Every Storm Is an Opportunity.
             </p>
+            <TrustBadgeRow className="mx-auto mt-4 max-w-2xl" />
           </div>
         )}
 
@@ -128,33 +131,6 @@ export default function Calculator() {
             </AnimatePresence>
           </div>
         </main>
-
-        {/* Footer */}
-        <footer className="py-6 px-4 text-center border-t border-brand-border/30">
-          <p className="text-xs text-brand-muted mb-1">
-            © 2026 • Legacy Media LLC DBA RazoRSharp Networks • All Rights Reserved.
-          </p>
-          <p className="text-xs text-brand-muted">
-            Powered By:{' '}
-            <a
-              href="https://pillar.razorsharpnetworks.com/webassetfx-smart-sites"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-muted-light hover:text-brand-primary transition-colors"
-            >
-              WebAssetFX
-            </a>
-            {' & '}
-            <a
-              href="https://pillar.razorsharpnetworks.com/automate-ai-agents-overview"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-muted-light hover:text-brand-primary transition-colors"
-            >
-              AutoMATE™ AI Technology
-            </a>
-          </p>
-        </footer>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import ScoreGauge from './ScoreGauge';
+import TrustBadgeRow from './TrustBadgeRow';
 import type { CalculationResult } from '@/lib/calculator';
 import type { Insight } from '@/lib/insights';
 
@@ -38,6 +39,15 @@ export default function Results({ result, insights }: ResultsProps) {
         <p className="text-brand-muted text-lg">
           Here&apos;s what the numbers say about your business.
         </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="mb-10"
+      >
+        <TrustBadgeRow className="mx-auto max-w-2xl" />
       </motion.div>
 
       {/* Score Gauge */}
@@ -86,6 +96,66 @@ export default function Results({ result, insights }: ResultsProps) {
               {formatCurrency(result.potentialAnnualRevenue)}
             </p>
           </div>
+        </div>
+      </motion.div>
+
+      {/* Proof Layer */}
+      <motion.div
+        className="glass-card mb-10 rounded-2xl p-6 md:p-8"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.1 }}
+      >
+        <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="mb-2 text-sm font-medium uppercase tracking-[0.2em] text-brand-primary-light">
+              Proof from the field
+            </p>
+            <h3 className="text-2xl font-bold text-brand-fg">What this looks like in a real business</h3>
+          </div>
+          <p className="max-w-xl text-sm text-brand-muted-light md:text-right">
+            These numbers are built around the same operational leaks we fix for service businesses every week.
+          </p>
+        </div>
+
+        <div className="grid gap-3 md:grid-cols-3">
+          {[
+            '4,200+ businesses diagnosed',
+            '47% avg reduction in repeat work',
+            '11 hrs/week reclaimed on average',
+          ].map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-brand-primary/15 bg-brand-primary/10 px-4 py-4 text-sm font-medium text-brand-fg shadow-[0_0_20px_rgba(168,58,196,0.08)]"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-brand-border/60 bg-brand-card/70 p-6 shadow-[0_0_24px_rgba(168,58,196,0.08)]">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-brand-muted-light">
+            Texas Dent Company
+          </p>
+          <h4 className="mb-4 text-2xl font-bold text-brand-fg">
+            Texas Dent Company reclaimed 40+ hours/month of manual follow-up
+          </h4>
+
+          <div className="mb-5 grid gap-3 md:grid-cols-2">
+            <div className="rounded-xl border border-brand-border/60 bg-brand-bg/40 p-4">
+              <p className="text-sm text-brand-muted">Time reclaimed</p>
+              <p className="mt-1 text-lg font-semibold text-brand-fg">40+ hours/month back from manual follow-up</p>
+            </div>
+            <div className="rounded-xl border border-brand-border/60 bg-brand-bg/40 p-4">
+              <p className="text-sm text-brand-muted">Owner workload replaced</p>
+              <p className="mt-1 text-lg font-semibold text-brand-fg">8-10+ hours/week of reminder work automated</p>
+            </div>
+          </div>
+
+          <blockquote className="border-l-2 border-brand-primary pl-4 text-base italic leading-relaxed text-brand-muted-light md:text-lg">
+            “Before RazoRSharp Networks, I was the reminder system for the whole company. Now the follow-up is getting handled by the business itself.”
+          </blockquote>
+          <p className="mt-3 text-sm font-semibold text-brand-fg">— Cody Wilson, Texas Dent Company</p>
         </div>
       </motion.div>
 
