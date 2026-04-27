@@ -8,12 +8,6 @@ interface HeroLandingProps {
   onStart: () => void;
 }
 
-const socialProof = [
-  '4,200+ businesses diagnosed',
-  '47% avg reduction in repeat work',
-  '11 hrs/week reclaimed on average',
-];
-
 const steps = [
   {
     title: 'Answer 6 quick questions about your storm operations',
@@ -80,7 +74,7 @@ export default function HeroLanding({ onStart }: HeroLandingProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -24 }}
       transition={{ duration: 0.45, ease: 'easeOut' }}
-      className="relative overflow-hidden rounded-[2rem] border border-white/8 bg-brand-card/70 shadow-[0_24px_90px_rgba(0,0,0,0.45)]"
+      className="relative overflow-hidden"
     >
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -93,8 +87,8 @@ export default function HeroLanding({ onStart }: HeroLandingProps) {
       />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,58,196,0.2),transparent_32%)]" aria-hidden="true" />
 
-      <div className="relative px-6 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
-        <div className="mx-auto flex min-h-[calc(100vh-12rem)] max-w-6xl flex-col justify-center">
+      <div className="relative px-6 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
+        <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,7 +103,7 @@ export default function HeroLanding({ onStart }: HeroLandingProps) {
               Every Storm Creates Demand. Most Restoration Businesses Capture a Fraction of It.
             </h1>
 
-            <p className="mt-5 max-w-2xl text-base leading-7 text-brand-muted-light sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-brand-muted-light sm:text-lg">
               Find out how much revenue, time, and efficiency you&apos;re leaving behind — in 90 seconds.
             </p>
           </motion.div>
@@ -118,21 +112,24 @@ export default function HeroLanding({ onStart }: HeroLandingProps) {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.16, duration: 0.45 }}
-            className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 rounded-2xl border border-white/8 bg-black/20 px-5 py-4 text-sm text-brand-fg backdrop-blur-sm"
+            className="mt-6 flex flex-col items-start"
           >
-            {socialProof.map((item, index) => (
-              <div key={item} className="flex items-center gap-4">
-                {index > 0 && <span className="hidden h-1 w-1 rounded-full bg-brand-primary/70 sm:block" aria-hidden="true" />}
-                <span>{item}</span>
-              </div>
-            ))}
+            <motion.button
+              onClick={onStart}
+              className="w-full rounded-2xl bg-gradient-to-r from-brand-primary to-brand-accent px-8 py-5 text-lg font-bold text-white shadow-[0_0_30px_rgba(168,58,196,0.3)] transition-all hover:shadow-[0_0_42px_rgba(168,58,196,0.45)] sm:w-auto"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Calculate Your Storm Revenue Gap — Free
+            </motion.button>
+            <TrustBadgeRow className="mt-4 justify-start" />
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.24, duration: 0.45 }}
-            className="mt-8 grid gap-4 lg:grid-cols-3"
+            className="mt-10 grid gap-4 lg:grid-cols-3"
           >
             {steps.map((step, index) => (
               <div
@@ -151,23 +148,6 @@ export default function HeroLanding({ onStart }: HeroLandingProps) {
                 </div>
               </div>
             ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.32, duration: 0.45 }}
-            className="mt-10 flex flex-col items-start"
-          >
-            <motion.button
-              onClick={onStart}
-              className="w-full rounded-2xl bg-gradient-to-r from-brand-primary to-brand-accent px-8 py-5 text-lg font-bold text-white shadow-[0_0_30px_rgba(168,58,196,0.3)] transition-all hover:shadow-[0_0_42px_rgba(168,58,196,0.45)] sm:w-auto"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Calculate Your Storm Revenue Gap — Free
-            </motion.button>
-            <TrustBadgeRow className="mt-4 justify-start" />
           </motion.div>
         </div>
       </div>
