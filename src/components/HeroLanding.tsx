@@ -177,6 +177,8 @@ export default function HeroLanding({ onStart }: HeroLandingProps) {
                 <Link
                   key={v.label}
                   href={v.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="rounded-full border border-brand-primary/20 bg-brand-primary/10 px-3 py-1.5 text-xs font-medium text-brand-primary-light transition-colors hover:bg-brand-primary/20 hover:border-brand-primary/40"
                 >
                   {v.label}
