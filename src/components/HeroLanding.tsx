@@ -87,8 +87,8 @@ export default function HeroLanding({ onStart }: HeroLandingProps) {
       />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,58,196,0.2),transparent_32%)]" aria-hidden="true" />
 
-      <div className="relative px-6 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
-        <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col justify-center">
+      <div className="relative px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
+        <div className="mx-auto flex min-h-[calc(100vh-3rem)] max-w-6xl flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,11 +99,11 @@ export default function HeroLanding({ onStart }: HeroLandingProps) {
               Storm Revenue Recovery Calculator
             </div>
 
-            <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight text-brand-fg sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight text-brand-fg sm:text-5xl lg:text-[3.5rem]">
               Every Storm Creates Demand. Most Restoration Businesses Capture a Fraction of It.
             </h1>
 
-            <p className="mt-4 max-w-2xl text-base leading-7 text-brand-muted-light sm:text-lg">
+            <p className="mt-3 max-w-2xl text-base leading-7 text-brand-muted-light sm:text-lg">
               Find out how much revenue, time, and efficiency you&apos;re leaving behind — in 90 seconds.
             </p>
           </motion.div>
@@ -112,7 +112,7 @@ export default function HeroLanding({ onStart }: HeroLandingProps) {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.16, duration: 0.45 }}
-            className="mt-6 flex flex-col items-start"
+            className="mt-5 flex flex-col items-start"
           >
             <motion.button
               onClick={onStart}

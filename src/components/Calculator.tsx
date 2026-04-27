@@ -59,21 +59,21 @@ export default function Calculator() {
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* Hello Bar */}
         <header className="sticky top-0 z-50 w-full border-b border-white/8 bg-[#0A0A0F]/95 backdrop-blur-md">
-          <div className="mx-auto flex h-12 max-w-7xl items-center justify-between px-4">
+          <div className="flex h-12 w-full items-center justify-between px-4 sm:px-6">
             <div className="flex items-center gap-3">
               <img
                 src="/RS_Only_Purple_Logo_Transparent.png"
                 alt="RazoRSharp Networks"
                 className="h-7 w-auto"
               />
-              <span className="text-brand-fg font-semibold text-sm">
+              <span className="text-sm font-semibold text-brand-fg">
                 Storm Revenue Calculator
               </span>
             </div>
             {step === 'questions' && currentQuestion > 0 && (
               <button
                 onClick={handleBack}
-                className="text-sm text-brand-muted hover:text-brand-fg transition-colors"
+                className="text-sm text-brand-muted transition-colors hover:text-brand-fg"
               >
                 ← Back
               </button>
@@ -82,8 +82,8 @@ export default function Calculator() {
         </header>
 
         {/* Main Content */}
-        <main className={`flex-1 flex items-center ${step === 'landing' ? '' : 'px-4 py-4'}`}>
-          <div className={`w-full mx-auto ${step === 'landing' ? '' : 'max-w-4xl'}`}>
+        <main className={`flex-1 ${step === 'landing' ? '' : 'px-4 py-3'}`}>
+          <div className={`w-full ${step === 'landing' ? '' : 'mx-auto max-w-4xl'}`}>
             <AnimatePresence mode="wait">
               {step === 'landing' && <HeroLanding onStart={handleStart} />}
 
