@@ -36,13 +36,21 @@ async function ghlFetch(path: string, init: RequestInit = {}) {
 export async function findContactByEmail(email: string) {
   const locationId = getEnv("GHL_LOCATION_ID");
   if (!locationId) throw new Error("Missing GHL_LOCATION_ID");
-  const q = encodeURIComponent(email);
+  // Use exact email filter first for reliable deduplication (prevents stale matches when
+  // multiple contacts share the same email address in GHL)
+  const q = encodeURIComponent(email.trim().toLowerCase());
   const { ok, status, json, text } = await ghlFetch(
-    `/contacts/?locationId=${locationId}&query=${q}&limit=1`,
+    `/contacts/?locationId=${locationId}&email=${q}&limit=1`,
     { method: "GET" }
   );
   if (!ok) throw new Error(`Contact lookup failed (${status}): ${text}`);
-  return json?.contacts?.[0] || null;
+  // Fall back to query-based search if exact email filter returns nothing
+  if (json?.contacts?.[0]) return json.contacts[0];
+  const fallback = await ghlFetch(
+    `/contacts/?locationId=${locationId}&query=${q}&limit=1`,
+    { method: "GET" }
+  );
+  return fallback.json?.contacts?.[0] || null;
 }
 
 export async function createContact(input: {

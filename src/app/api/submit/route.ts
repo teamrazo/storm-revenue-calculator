@@ -132,6 +132,10 @@ export async function POST(req: NextRequest) {
     const SLACK_WEBHOOK = process.env.SLACK_NOTIFICATION_WEBHOOK;
     const fmtCurrency = (n: number) => n >= 1000000 ? `$${(n/1000000).toFixed(1)}M` : `$${n.toLocaleString()}`;
 
+    const GHL_LOCATION_BASE = `https://app.leadconnectorhq.com/contacts/${ghlContactId || ''}`.replace(/\/$/, '');
+    const ghlContactUrl = ghlContactId
+      ? `\n• *GHL Contact:* <${GHL_LOCATION_BASE}|View in GHL>` : '';
+
     const slackText =
       `🌩️ *New Storm Revenue Calculator Submission*\n` +
       `• *Name:* ${name}\n` +
@@ -141,6 +145,7 @@ export async function POST(req: NextRequest) {
       `• *Score:* ${score}/100\n` +
       `• *Revenue Gap:* ${fmtCurrency(revenueGapLow)} – ${fmtCurrency(revenueGapHigh)}\n` +
       `• *Weak Areas:* ${(weakAreas || []).join(', ') || 'None'}\n` +
+      `• *GHL:* ${ghlContactId ? `${ghlCreated ? 'Created' : 'Updated'} contact` : 'Not synced'}${ghlContactUrl}\n` +
       `• *Time:* ${new Date(submittedAt).toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}`;
 
     if (SLACK_WEBHOOK) {
