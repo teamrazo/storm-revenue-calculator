@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
+import SideTabs from '@/components/SideTabs';
+
+const GTM_ID = "GTM-TMHF7F";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -231,8 +235,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Script id="gtm-script" strategy="afterInteractive">{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","${GTM_ID}");`}</Script>
       </head>
       <body className="antialiased">
+        <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} /></noscript>
         {children}
         <footer style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '24px 16px', textAlign: 'center', background: '#0A0A0F' }}>
           <p style={{ color: '#999', fontSize: 13, lineHeight: 1.8, margin: 0 }}>
@@ -245,6 +251,7 @@ export default function RootLayout({
             <a href="https://pillar.razorsharpnetworks.com/automate-ai-agents-overview" style={{ color: '#7c3aed', textDecoration: 'none' }}>AutoMATE™ AI Technology</a>
           </p>
         </footer>
+        <SideTabs />
       </body>
     </html>
   );
