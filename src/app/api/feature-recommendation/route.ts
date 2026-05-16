@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       lastName: (name || '').split(' ').slice(1).join(' ') || '',
       email: email || undefined,
       source: 'Storm Calculator Recommend Tab',
-      tags: ['feature-request', 'storm-calculator', 'notify:feature-request'],
+      tags: ['feature-request', 'storm-calculator', 'notify:feature-request', 'action - website_form - request'],
     };
     // Remove undefined fields
     Object.keys(contactPayload).forEach(k => contactPayload[k] === undefined && delete contactPayload[k]);
